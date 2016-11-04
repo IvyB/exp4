@@ -5,7 +5,7 @@ import java.text.*;
 /**
  * This class implements a gourmet coffee system.
  *
- * @author author name
+ * @author 佟骜 20154905
  * @version 1.1.0
  * @see Product
  * @see Coffee
@@ -23,7 +23,7 @@ import java.text.*;
 public class GourmetCoffee  {
 
 	private static BufferedReader  stdIn =
-		new  BufferedReader(new  InputStreamReader(System.in));
+			new  BufferedReader(new  InputStreamReader(System.in));
 	private static PrintWriter  stdOut = new  PrintWriter(System.out, true);
 	private static PrintWriter  stdErr = new  PrintWriter(System.err, true);
 
@@ -50,7 +50,7 @@ public class GourmetCoffee  {
 		} else {
 			try {
 				catalog =
-					(new FileCatalogLoader()).loadCatalog(args[0]);
+						(new FileCatalogLoader()).loadCatalog(args[0]);
 			} catch (FileNotFoundException fnfe) {
 				stdErr.println("The file does not exist");
 
@@ -58,13 +58,13 @@ public class GourmetCoffee  {
 
 			} catch (DataFormatException dfe) {
 				stdErr.println("The file contains malformed data: "
-				               + dfe.getMessage());
+						+ dfe.getMessage());
 
 				System.exit(1);
 			}
 
 			GourmetCoffee  application =
-				new GourmetCoffee(catalog);
+					new GourmetCoffee(catalog);
 
 			application.run();
 		}
@@ -82,7 +82,7 @@ public class GourmetCoffee  {
 		this.catalog = initialCatalog;
 		this.sales = new Sales();
 		this.salesFormatter =
-			PlainTextSalesFormatter.getSingletonInstance();
+				PlainTextSalesFormatter.getSingletonInstance();
 
 		loadSales();
 	}
@@ -94,7 +94,7 @@ public class GourmetCoffee  {
 
 		Order orderOne = new Order();
 		Product productOne = this.catalog.getProduct("C001");
-		
+
 		if (productOne != null) {
 			orderOne.addItem(new OrderItem(productOne, 5));
 			this.sales.addOrder(orderOne);
@@ -132,22 +132,22 @@ public class GourmetCoffee  {
 				displayCatalog();
 			} else if (choice == 2)  {
 				this.salesFormatter =
-					PlainTextSalesFormatter.getSingletonInstance();
+						PlainTextSalesFormatter.getSingletonInstance();
 				writeFile(
-					readFilename(),
-					this.salesFormatter.formatSales(this.sales));
+						readFilename(),
+						this.salesFormatter.formatSales(this.sales));
 			} else if (choice == 3)  {
 				this.salesFormatter =
-					HTMLSalesFormatter.getSingletonInstance();
+						HTMLSalesFormatter.getSingletonInstance();
 				writeFile(
-					readFilename(),
-					this.salesFormatter.formatSales(this.sales));
+						readFilename(),
+						this.salesFormatter.formatSales(this.sales));
 			} else if (choice == 4)  {
 				this.salesFormatter =
-					XMLSalesFormatter.getSingletonInstance();
+						XMLSalesFormatter.getSingletonInstance();
 				writeFile(
-					readFilename(),
-					this.salesFormatter.formatSales(this.sales));
+						readFilename(),
+						this.salesFormatter.formatSales(this.sales));
 			}
 
 			choice = getChoice();
@@ -167,11 +167,11 @@ public class GourmetCoffee  {
 			try  {
 				stdErr.println();
 				stdErr.print("[0]  Quit\n"
-				             + "[1]  Display Catalog\n"
-				             + "[2]  Save sales (Plain Text)\n"
-				             + "[3]  Save sales (HTML)\n"
-				             + "[4]  Save sales (XML)\n"
-				             + "choice> ");
+						+ "[1]  Display Catalog\n"
+						+ "[2]  Save sales (Plain Text)\n"
+						+ "[3]  Save sales (HTML)\n"
+						+ "[4]  Save sales (XML)\n"
+						+ "choice> ");
 				stdErr.flush();
 
 				input = Integer.parseInt(stdIn.readLine());
@@ -203,7 +203,7 @@ public class GourmetCoffee  {
 		} else {
 			for (Product product : this.catalog) {
 				stdOut.println(product.getCode() + " "
-				               + product.getDescription());
+						+ product.getDescription());
 			}
 		}
 	}
@@ -216,15 +216,15 @@ public class GourmetCoffee  {
 	 * @param content data to be stored
 	 */
 	private void writeFile(String filename, String content)
-		throws IOException {
+			throws IOException {
 
 		String path="F:/Workspace/J2SE/Test04";
 		FileOutputStream output=null;
 		output = new FileOutputStream(filename);
 		File file = new File(path,filename);
-		output.write(content.getBytes("utf-8"));  
-	    output.close();  
-		
+		output.write(content.getBytes("utf-8"));
+		output.close();
+
 	}
 
 	/**

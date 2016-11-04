@@ -9,10 +9,10 @@ import java.io.*;
  */
 public interface CatalogLoader  {
 
-	/*
+	/**
 	 * Loads the product catalog with the data in the specified file.
 	 *
-	 * @param filename  The name of a file that contains catalog
+	 * @param fileName  The name of a file that contains catalog
 	 *                  information.
 	 * @return the product catalog.
 	 * @throws FileNotFoundException  if the specified file does not

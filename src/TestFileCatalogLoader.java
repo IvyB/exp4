@@ -1,5 +1,4 @@
 import java.io.*;
-import java.util.*;
 
 /**
  * Tests the class <code>FileCatalogLoader</code>
